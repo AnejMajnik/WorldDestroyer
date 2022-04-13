@@ -47,6 +47,7 @@ canvas{
 	color:#00ff0d;
 	text-align:center;
 	margin-top:50px;
+	margin-bottom:10px;
 	font-family:myFirstFont;
 	height:100px;
 	-webkit-text-stroke: 3px #8233e8;
