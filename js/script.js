@@ -1,9 +1,5 @@
 function beginning(){
-	Swal.fire(
-  'The Internet?',
-  'That thing is still around?',
-  'question'
-)
+	
 }
 function drawIt(){
 	var x = 315;
@@ -35,25 +31,31 @@ function drawIt(){
 	var intTimer;
 	var izpisTimer;
 	var score;
+	var bricknum=0;
+	var noscore=0;
 	var start=true;
 	var f=r/2;
 	var planet1 = new Image();
 	planet1.src = "images/earth.png";
 	var planet2 = new Image();
 	planet2.src = "images/earth1.png";
+	
 	function timer(){
-	if(start==true){
-		sekunde++;
-		sekundeI = ((sekundeI = (sekunde % 60)) > 9) ? sekundeI : "0"+sekundeI;
-		minuteI = ((minuteI = Math.floor(sekunde / 60)) > 9) ? minuteI : "0"+minuteI;
-		izpisTimer = minuteI + ":" + sekundeI;
-		$("#cas").html("TIME: "+izpisTimer);
-	}else{
-		sekunde=0;
-		izpisTimer="00:00";
-		$("#cas").html("TIME: "+izpisTimer);
+		if(start==true){
+			sekunde++;
+
+			sekundeI = ((sekundeI = (sekunde % 60)) > 9) ? sekundeI : "0"+sekundeI;
+			minuteI = ((minuteI = Math.floor(sekunde / 60)) > 9) ? minuteI : "0"+minuteI;
+			izpisTimer = minuteI + ":" + sekundeI;
+
+			$("#timer").html("TIME: "+izpisTimer);
+		}
+		else{
+			sekunde=0;
+			//izpisTimer = "00:00";
+			$("#timer").html("TIME: "+izpisTimer);
+		}
 	}
-}
 	
 	//nastavljanje leve in desne tipke
 	function onKeyDown(evt) {
@@ -92,6 +94,9 @@ function drawIt(){
 		score = 0;
 		$("#score").html("SCORE: "+score);
 		$("#lives").html("LIVES: "+lives);
+		sekunde = 0;
+		izpisTimer = "00:00";
+		intTimer = setInterval(timer, 1000);
 		return setInterval(draw, 2);
 	}
 	function initbricks() { //inicializacija opek - polnjenje v tabelo
@@ -105,6 +110,7 @@ function drawIt(){
 			bricks[i] = new Array(NCOLS);
 			for (j=0; j < NCOLS; j++) {
 				bricks[i][j] = 2;
+				bricknum+=2;
 		}
 	  }
 	}
@@ -189,13 +195,19 @@ function drawIt(){
 			//Če smo zadeli opeko, vrni povratno kroglo in označi v tabeli, da opeke ni več
 			if (y < NROWS * rowheight && row >= 0 && col >= 0 && bricks[row][col] == 2) {
 				dy = -dy; bricks[row][col] = 1;
+				if(noscore<1){
 				score=score+10;
+				bricknum-=1;
 				$("#score").html("SCORE: "+score);
+				}
 			}
 			else if (y < NROWS * rowheight && row >= 0 && col >= 0 && bricks[row][col] == 1) {
 				dy = -dy; bricks[row][col] = 0;
+				if(noscore<1){
 				score=score+10;
+				bricknum-=1;
 				$("#score").html("SCORE: "+score);
+				}
 			}
 			
 			
@@ -204,16 +216,24 @@ function drawIt(){
 			if (y + dy < r)
 				dy = -dy;
 			else if (y + dy > paddley-r) {
-				if (x > paddlex && x < paddlex + paddlew) {
+				if (x > paddlex && x < paddlex + paddlew && noscore<1) {
 					dx =((x-(paddlex+paddlew/2))/paddlew);
 					dy = -dy;
 			}else if(y + dy > HEIGHT-(r+3) && lives>0){
 				lives-=1;
+				score-=20;
 				$("#lives").html("LIVES: "+lives);
 				dy = -dy;
+				start=true;
 			}else if(y + dy > HEIGHT-(r+3) && lives==0){ //3 je border canvasa
 				start=false;
+				noscore+=1;
+				// location.reload();
 				$("#lives").html("LIVES: "+lives);
+				clearInterval(intervalId);
+			}else if(y + dy > HEIGHT-(r+3) && bricknum==0){
+				start=false;
+				noscore+=1;
 				clearInterval(intervalId);
 			}
 			
