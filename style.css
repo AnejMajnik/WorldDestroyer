@@ -1,0 +1,132 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+body{
+	background-image:url("images/background2.jpg");
+	background-size:cover;
+	height:500px;
+	justify-content:center;
+}
+canvas{
+	border:3px solid #8233e8;
+	margin-left:180px;
+	/* float:left; */
+	display:inline-block;
+	margin-top:20px;
+}
+#wrapper{
+	width:1080px;
+	height:950px;
+	margin-left:auto;
+	margin-right:auto;
+	
+}
+
+#lives{
+	font-family:myFirstFont;
+	color:#00ff0d;
+	font-size:26px;
+	margin-left:485px;
+}
+#timer{
+	font-family:myFirstFont;
+	color:#00ff0d;
+	font-size:26px;
+	margin-left:485px;
+}
+#score{
+	font-family:myFirstFont;
+	color:#00ff0d;
+	font-size:26px;
+	margin-left:480px;
+}
+#header{
+	font-size:90px;
+	color:#00ff0d;
+	text-align:center;
+	margin-top:50px;
+	font-family:myFirstFont;
+	height:100px;
+	-webkit-text-stroke: 3px #8233e8;
+}
+#easy{
+	height:30px;
+	width:130px;
+	border:3px solid #8233e8;
+	float:right;
+	position:relative;
+	text-align:center;
+	color:#00ff0d;
+	font-size:26px;
+	font-family:myFirstFont;
+	margin-top:742px;
+	margin-right:650px;
+	cursor:pointer;
+}
+#medium{
+	height:30px;
+	width:130px;
+	border:3px solid #8233e8;
+	float:right;
+	position:relative;
+	text-align:center;
+	color:#00ff0d;
+	font-size:26px;
+	font-family:myFirstFont;
+	/* margin-top:70px; */
+	margin-right:50px;
+	cursor:pointer;
+}
+#hard{
+	height:30px;
+	width:130px;
+	border:3px solid #8233e8;
+	float:right;
+	position:relative;
+	text-align:center;
+	color:#00ff0d;
+	font-size:26px;
+	font-family:myFirstFont;
+	margin-top:150px;
+	margin-right:50px;
+	cursor:pointer;
+}
+#restart{
+	height:30px;
+	width:130px;
+	border:3px solid #8233e8;
+	float:right;
+	position:relative;
+	text-align:center;
+	color:#00ff0d;
+	font-size:26px;
+	font-family:myFirstFont;
+	/* margin-top:741px; */
+	margin-right:764px;
+	cursor:pointer;
+}
+@font-face {
+  font-family: myFirstFont;
+  src: url(font/RobotInvaders-d9VmR.ttf);
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000000; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #7107db; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6806c9; 
+}
