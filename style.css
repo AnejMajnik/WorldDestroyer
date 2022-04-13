@@ -11,7 +11,7 @@ body{
 }
 canvas{
 	border:3px solid #8233e8;
-	margin-left:180px;
+	margin-left:185px;
 	/* float:left; */
 	display:inline-block;
 	margin-top:20px;
@@ -28,13 +28,13 @@ canvas{
 	font-family:myFirstFont;
 	color:#00ff0d;
 	font-size:26px;
-	margin-left:485px;
+	margin-left:488px;
 }
 #timer{
 	font-family:myFirstFont;
 	color:#00ff0d;
 	font-size:26px;
-	margin-left:475px;
+	margin-left:470px;
 }
 #score{
 	font-family:myFirstFont;
@@ -104,8 +104,11 @@ canvas{
 	font-size:26px;
 	font-family:myFirstFont;
 	/* margin-top:741px; */
-	margin-right:764px;
+	margin-right:759px;
 	cursor:pointer;
+}
+swal{
+	color:#00ff0d;
 }
 @font-face {
   font-family: myFirstFont;
