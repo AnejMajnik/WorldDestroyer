@@ -106,7 +106,6 @@ function drawIt(){
 	planet1.src = "images/earth.png";
 	var planet2 = new Image();
 	planet2.src = "images/earth1.png";
-	const colors = ["#8233e8", "#00ff0d"];
 	
 	function timer(){
 		if(start==true){
@@ -294,7 +293,7 @@ function drawIt(){
 				if (x > paddlex && x < paddlex + paddlew && noscore<1) {
 					dx =((x-(paddlex+paddlew/2))/paddlew);
 					dy = -dy;
-					color+=1;
+					
 			}else if(y + dy > HEIGHT-(r+3) && lives>0){
 				lives-=1;
 				score-=20;
