@@ -9,10 +9,10 @@ function beginning(){
 );
 $(".swal2-html-container").css('font-family','myFirstFont');
 $(".swal2-content").css('color','#00ff0d');
-$(".swal2-content").css('font-size','26px');
+$(".swal2-content").css('font-size','36px');
 $(".swal2-title").css('color','#00ff0d');
-$(".swal2-title").css('font-size','46px');
-$(".swal2-title").css('letter-spacing','3px');
+$(".swal2-title").css('font-size','55px');
+$(".swal2-title").css('letter-spacing','4px');
 $(".swal2-title").css('font-family','myFirstFont');
 $(".swal2-confirm").css('font-family','myFirstFont');
 $(".swal2-confirm").css('background','transparent');
@@ -21,6 +21,7 @@ $(".swal2-confirm").css('color','#00ff0d');
 $(".swal2-confirm").css('font-size','26px');
 $(".swal2-modal").css('background','transparent');
 }
+
 function win(){
 	Swal.fire({
 		title: 'YOU WON',
@@ -35,7 +36,7 @@ $(".swal2-content").css('color','#00ff0d');
 $(".swal2-content").css('font-size','26px');
 $(".swal2-title").css('color','#00ff0d');
 $(".swal2-title").css('font-size','46px');
-$(".swal2-title").css('letter-spacing','3px');
+$(".swal2-title").css('letter-spacing','4px');
 $(".swal2-title").css('font-family','myFirstFont');
 $(".swal2-confirm").css('font-family','myFirstFont');
 $(".swal2-confirm").css('background','transparent');
@@ -58,7 +59,7 @@ $(".swal2-content").css('color','#00ff0d');
 $(".swal2-content").css('font-size','26px');
 $(".swal2-title").css('color','#00ff0d');
 $(".swal2-title").css('font-size','46px');
-$(".swal2-title").css('letter-spacing','3px');
+$(".swal2-title").css('letter-spacing','4px');
 $(".swal2-title").css('font-family','myFirstFont');
 $(".swal2-confirm").css('font-family','myFirstFont');
 $(".swal2-confirm").css('background','transparent');
@@ -105,6 +106,7 @@ function drawIt(){
 	planet1.src = "images/earth.png";
 	var planet2 = new Image();
 	planet2.src = "images/earth1.png";
+	const colors = ["#8233e8", "#00ff0d"];
 	
 	function timer(){
 		if(start==true){
@@ -205,7 +207,7 @@ function drawIt(){
 		ctx.beginPath();
 		ctx.rect(x,y,w,h);
 		ctx.closePath();
-		ctx.fillStyle = "#00ff0d"
+		ctx.fillStyle = "#8233e8"
 		ctx.fill();
 	}
 	
@@ -248,9 +250,11 @@ function drawIt(){
 				for (j=0; j < NCOLS; j++) {
 					if (bricks[i][j] == 1) {
 						ctx.drawImage(planet2, (j * (BRICKWIDTH + PADDING)) + PADDING, (i * (BRICKHEIGHT + PADDING)) + PADDING, BRICKWIDTH, BRICKHEIGHT);
+						bricknum+=1;
 					}
 					if(bricks[i][j]==2){
 						ctx.drawImage(planet1, (j * (BRICKWIDTH + PADDING)) + PADDING, (i * (BRICKHEIGHT + PADDING)) + PADDING, BRICKWIDTH, BRICKHEIGHT);
+						bricknum+=1;
 					}
 				}
 			}
@@ -290,12 +294,13 @@ function drawIt(){
 				if (x > paddlex && x < paddlex + paddlew && noscore<1) {
 					dx =((x-(paddlex+paddlew/2))/paddlew);
 					dy = -dy;
+					color+=1;
 			}else if(y + dy > HEIGHT-(r+3) && lives>0){
 				lives-=1;
 				score-=20;
 				$("#lives").html("LIVES: "+lives);
 				dy = -dy; 
-				// start=true;
+				
 			}else if(y + dy > HEIGHT-(r+3) && lives==0){ //3 je border canvasa
 				start=false;
 				noscore+=1;
