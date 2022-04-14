@@ -12,6 +12,7 @@ $(".swal2-content").css('color','#00ff0d');
 $(".swal2-content").css('font-size','26px');
 $(".swal2-title").css('color','#00ff0d');
 $(".swal2-title").css('font-size','46px');
+$(".swal2-title").css('letter-spacing','3px');
 $(".swal2-title").css('font-family','myFirstFont');
 $(".swal2-confirm").css('font-family','myFirstFont');
 $(".swal2-confirm").css('background','transparent');
@@ -21,15 +22,50 @@ $(".swal2-confirm").css('font-size','26px');
 $(".swal2-modal").css('background','transparent');
 }
 function win(){
+	Swal.fire({
+		title: 'YOU WON',
+		text: 'Click to restart!',
+		confirmButtonText: 'RESTART',
+	}).then(function(){
+	location.reload();
+   }
+);
+$(".swal2-html-container").css('font-family','myFirstFont');
+$(".swal2-content").css('color','#00ff0d');
+$(".swal2-content").css('font-size','26px');
+$(".swal2-title").css('color','#00ff0d');
+$(".swal2-title").css('font-size','46px');
+$(".swal2-title").css('letter-spacing','3px');
+$(".swal2-title").css('font-family','myFirstFont');
+$(".swal2-confirm").css('font-family','myFirstFont');
+$(".swal2-confirm").css('background','transparent');
+$(".swal2-confirm").css('border','3px solid #8233e8');
+$(".swal2-confirm").css('color','#00ff0d');
+$(".swal2-confirm").css('font-size','26px');
+$(".swal2-modal").css('background','transparent');
 }
 function lose(){
 	Swal.fire({
-		title: 'World Destroyer',
-		text: 'Move the paddle with arrow keys or with mouse. Destroy all worlds to win!',
-	}).then(function(){ 
-		window.location.reload(true);
+		title: 'YOU LOST',
+		text: 'Click to restart!',
+		confirmButtonText: 'RESTART',
+	}).then(function(){
+	location.reload();
    }
 );
+$(".swal2-html-container").css('font-family','myFirstFont');
+$(".swal2-content").css('color','#00ff0d');
+$(".swal2-content").css('font-size','26px');
+$(".swal2-title").css('color','#00ff0d');
+$(".swal2-title").css('font-size','46px');
+$(".swal2-title").css('letter-spacing','3px');
+$(".swal2-title").css('font-family','myFirstFont');
+$(".swal2-confirm").css('font-family','myFirstFont');
+$(".swal2-confirm").css('background','transparent');
+$(".swal2-confirm").css('border','3px solid #8233e8');
+$(".swal2-confirm").css('color','#00ff0d');
+$(".swal2-confirm").css('font-size','26px');
+$(".swal2-modal").css('background','transparent');
 }
 function drawIt(){
 	var x = 315;
@@ -145,7 +181,6 @@ function drawIt(){
 	  }
 	}
 	function init_mouse() {
-		//canvasMinX = $("#canvas").offset().left;
 		canvasMinX = $("canvas").offset().left;
 		canvasMaxX = canvasMinX + WIDTH;
 	}
@@ -253,21 +288,27 @@ function drawIt(){
 				lives-=1;
 				score-=20;
 				$("#lives").html("LIVES: "+lives);
-				dy = -dy;
-				start=true;
+				dy = -dy; 
+				// start=true;
 			}else if(y + dy > HEIGHT-(r+3) && lives==0){ //3 je border canvasa
 				start=false;
 				noscore+=1;
-				
-				// location.reload();
+				if(start==false){
+					noscore=0;
+					lose();
+				}
 				$("#lives").html("LIVES: "+lives);
 				clearInterval(intervalId);
-				lose();
 			}else if(y + dy > HEIGHT-(r+3) || bricknum==0){
 				start=false;
 				noscore+=1;
+				if(start==false){
+					noscore=0;
+					lose();
+			}
 				clearInterval(intervalId);
 			}
+			
 			
 		}
 
@@ -282,4 +323,3 @@ function drawIt(){
 	
 
 }
-
