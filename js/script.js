@@ -206,7 +206,7 @@ function drawIt(){
 		ctx.beginPath();
 		ctx.rect(x,y,w,h);
 		ctx.closePath();
-		ctx.fillStyle = "#8233e8"
+		ctx.fillStyle = "#00ff0d"
 		ctx.fill();
 	}
 	
