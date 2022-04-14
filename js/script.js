@@ -70,8 +70,8 @@ $(".swal2-modal").css('background','transparent');
 function drawIt(){
 	var x = 315;
 	var y = 600;
-	var dx = 1.5;
-	var dy = 1.5;
+	var dx = 2;
+	var dy = 2;
 	var r = 8;
 	var WIDTH;
 	var HEIGHT;
@@ -176,7 +176,8 @@ function drawIt(){
 			bricks[i] = new Array(NCOLS);
 			for (j=0; j < NCOLS; j++) {
 				bricks[i][j] = 2;
-				bricknum+=2;
+				bricknum+=3;
+				
 		}
 	  }
 	}
@@ -268,12 +269,17 @@ function drawIt(){
 			}
 			else if (y < NROWS * rowheight && row >= 0 && col >= 0 && bricks[row][col] == 1) {
 				dy = -dy; bricks[row][col] = 0;
+				
 				if(noscore<1){
 				score=score+10;
 				bricknum-=1;
 				$("#score").html("SCORE: "+score);
 				}
+				if(bricknum=0){
+					win();
+				}
 			}
+			
 			
 			
 			if (x + dx > WIDTH -r|| x + dx < r)
@@ -304,7 +310,7 @@ function drawIt(){
 				noscore+=1;
 				if(start==false){
 					noscore=0;
-					lose();
+					win();
 			}
 				clearInterval(intervalId);
 			}
