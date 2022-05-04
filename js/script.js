@@ -23,6 +23,7 @@ $(".swal2-modal").css('background','transparent');
 }
 
 function win(){
+	start=true;
 	Swal.fire({
 		title: 'YOU WON',
 		text: 'Click to restart!',
@@ -46,6 +47,7 @@ $(".swal2-confirm").css('font-size','26px');
 $(".swal2-modal").css('background','transparent');
 }
 function lose(){
+	start=true;
 	Swal.fire({
 		title: 'YOU LOST',
 		text: 'Click to restart!',
@@ -71,8 +73,8 @@ $(".swal2-modal").css('background','transparent');
 function drawIt(){
 	var x = 315;
 	var y = 600;
-	var dx = 2;
-	var dy = 2;
+	var dx = 4;
+	var dy = 4;
 	var r = 8;
 	var WIDTH;
 	var HEIGHT;
@@ -97,6 +99,7 @@ function drawIt(){
 	var minuteI;
 	var intTimer;
 	var izpisTimer;
+	var konec=false;
 	var score;
 	var bricknum=0;
 	var noscore=0;
@@ -164,7 +167,7 @@ function drawIt(){
 		sekunde = 0;
 		izpisTimer = "00:00";
 		intTimer = setInterval(timer, 1000);
-		return setInterval(draw, 2);
+		return setInterval(draw, 6);
 	}
 	function initbricks() { //inicializacija opek - polnjenje v tabelo
 		NROWS = 3;
@@ -305,6 +308,7 @@ function drawIt(){
 				noscore+=1;
 				if(start==false){
 					noscore=0;
+					clearInterval(intervalId);
 					lose();
 				}
 				$("#lives").html("LIVES: "+lives);
@@ -314,9 +318,10 @@ function drawIt(){
 				noscore+=1;
 				if(start==false){
 					noscore=0;
+					clearInterval(intervalId);
 					win();
 			}
-				clearInterval(intervalId);
+				// clearInterval(intervalId);
 			}
 			
 			
@@ -324,9 +329,10 @@ function drawIt(){
 
 		x += dx;
 		y += dy;
+		
 	}
 	
-	init();
+	var intervalId=init();
 	init_paddle();
 	init_mouse();
 	initbricks();
