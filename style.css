@@ -8,6 +8,7 @@ body{
 	background-size:cover;
 	height:500px;
 	justify-content:center;
+	overflow-x: hidden;
 }
 canvas{
 	border:3px solid #8233e8;
