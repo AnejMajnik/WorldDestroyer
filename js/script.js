@@ -73,8 +73,8 @@ $(".swal2-modal").css('background','transparent');
 function drawIt(){
 	var x = 315;
 	var y = 600;
-	var dx = 4;
-	var dy = 4;
+	var dx = 20;
+	var dy = 20;
 	var r = 8;
 	var WIDTH;
 	var HEIGHT;
